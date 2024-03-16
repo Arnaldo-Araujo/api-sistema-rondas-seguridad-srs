@@ -39,7 +39,7 @@ public class SubsidiaryComponent {
         given().header("Authorization", "Bearer " + BaseAPI.TOKEN).
                 contentType(ContentType.JSON).
                 pathParam("subsidiaryId", subsidiaryId)
-                .when().delete(Endpoints.API_SUBSIDIARY)
+                .when().delete(Endpoints.API_SUBSIDIARY+"/{subsidiaryId}")
                 .andReturn().body();
     }
 }

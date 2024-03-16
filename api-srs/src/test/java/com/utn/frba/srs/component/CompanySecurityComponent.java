@@ -13,7 +13,7 @@ public class CompanySecurityComponent {
         given().header("Authorization", "Bearer " + BaseAPI.TOKEN).
                 contentType(ContentType.JSON).
                 pathParam("companySecurityId", companySecurityId)
-                .when().delete(Endpoints.API_COMPANY_SECURITY)
+                .when().delete(Endpoints.API_COMPANY_SECURITY+"/{companySecurityId}")
                 .andReturn().body();
     }
 

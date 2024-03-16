@@ -1,9 +1,10 @@
 package com.utn.frba.srs.model;
 
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Getter
 @Setter
@@ -21,6 +22,8 @@ public class User {
 	@JoinColumn
 	private SecurityCompany securityCompany;
 	private String name;
+	@NotBlank
+	private String password;
 	private String lastname;
 	private String documentType;
 	private String documentValue;

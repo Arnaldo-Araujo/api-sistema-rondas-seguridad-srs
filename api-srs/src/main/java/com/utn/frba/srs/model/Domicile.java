@@ -2,8 +2,8 @@ package com.utn.frba.srs.model;
 
 import lombok.*;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 
 @Getter
 @Setter

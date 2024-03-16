@@ -1,3 +1,10 @@
+jwt:
+  secret:
+    key: PSeRImdBpL/gRcSWN+CQlBG3C037KYeZfEeoSFo+fzM=
+  time:
+    expiration: 300000
+
+
 server:
   servlet:
     context-path: /api-srs
@@ -34,3 +41,6 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant-path-matcher
+  sql:
+    init:
+      data-locations: classpath:sql/data.sql

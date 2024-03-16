@@ -37,7 +37,7 @@ public class CustomerComponent {
         given().header("Authorization", "Bearer " + BaseAPI.TOKEN).
                 contentType(ContentType.JSON).
                 pathParam("customerId", customerId)
-                .when().delete(Endpoints.API_CUSTOMER)
+                .when().delete(Endpoints.API_CUSTOMER+"/{customerId}")
                 .andReturn().body();
     }
 

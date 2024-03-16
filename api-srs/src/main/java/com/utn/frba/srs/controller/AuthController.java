@@ -1,7 +1,7 @@
 package com.utn.frba.srs.controller;
 
 
-import com.utn.frba.srs.utils.JWTUtil;
+import com.utn.frba.srs.security.jwt.JwtUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,9 +22,9 @@ public class AuthController {
 
     private final UserDetailsService userDetailsService;
 
-    private final JWTUtil jwtUtil;
+    private final JwtUtils jwtUtil;
 
-    public AuthController(AuthenticationManager authenticationManager, UserDetailsService userDetailsService, JWTUtil jwtUtil) {
+    public AuthController(AuthenticationManager authenticationManager, UserDetailsService userDetailsService, JwtUtils jwtUtil) {
         this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
         this.jwtUtil = jwtUtil;
@@ -35,7 +35,7 @@ public class AuthController {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.username(), request.password()));
             UserDetails userDetails = userDetailsService.loadUserByUsername(request.username());
-            String jwt = jwtUtil.generateToken(userDetails);
+            String jwt = jwtUtil.generateAccessToken(userDetails.getUsername());
             return new ResponseEntity<>(new AuthenticationResponse(jwt), HttpStatus.OK);
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
